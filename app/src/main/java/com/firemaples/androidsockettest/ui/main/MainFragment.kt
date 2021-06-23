@@ -1,32 +1,24 @@
 package com.firemaples.androidsockettest.ui.main
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.firemaples.androidsockettest.R
 
-class MainFragment : Fragment() {
+class MainFragment : Fragment(R.layout.main_fragment) {
+    private val viewModel: MainViewModel by viewModels()
 
-    companion object {
-        fun newInstance() = MainFragment()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setViews(view)
     }
 
-    private lateinit var viewModel: MainViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
+    private fun setViews(view: View) {
+        view.findViewById<View>(R.id.bt_setAsServer).setOnClickListener {
+            findNavController().navigate(MainFragmentDirections.actionSetAsServer())
+        }
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
 }
