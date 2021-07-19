@@ -20,5 +20,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         view.findViewById<View>(R.id.bt_setAsServer).setOnClickListener {
             findNavController().navigate(MainFragmentDirections.actionSetAsServer())
         }
+        view.findViewById<View>(R.id.bt_setAsClient).setOnClickListener {
+            findNavController().navigate(MainFragmentDirections.actionSetAsClient())
+        }
     }
 }

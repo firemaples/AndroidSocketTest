@@ -19,9 +19,10 @@ class ServerViewModel : ViewModel() {
         viewModelScope.launch {
             val ip = getWifiIp(context)
             if (ip.split(".").size >= 4) {
-                _networkInfo.value = "netcat $ip ${Constant.port}"
+                _networkInfo.value = "Connect the Android server on MAC by 'netcat $ip ${Constant.serverPort}'"
             } else {
-                _networkInfo.value = ip
+                _networkInfo.value =
+                    "$ip, you can still use 'adb forward tcp:${Constant.serverPort} tcp:${Constant.serverPort}' and 'netcat localhost ${Constant.serverPort}' to connect the Android server'"
             }
         }
     }

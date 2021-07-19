@@ -12,11 +12,18 @@
         <action
             android:id="@+id/action_setAsServer"
             app:destination="@id/fragment_server" />
+        <action
+            android:id="@+id/action_setAsClient"
+            app:destination="@id/clientFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/fragment_server"
         android:name="com.firemaples.androidsockettest.ui.server.ServerFragment"
         tools:layout="@layout/fragment_server" />
+    <fragment
+        android:id="@+id/clientFragment"
+        android:name="com.firemaples.androidsockettest.ui.client.ClientFragment"
+        tools:layout="@layout/fragment_client" />
 
 </navigation>
